@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Frontend
 
 # Controls when the workflow will run
 on:
@@ -24,6 +24,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      - name: Install node modules
+        uses: actions/setup-node@v2
+        with:
+          node-version: '8'
+        run: npm install
+
+      - name: Execute node tests
+        run: npm test
+
+      - name: Execute build process
+        run: npm run build
 
       # Runs a single command using the runners shell
       - name: Run a one-line script

@@ -6,9 +6,9 @@ name: Frontend
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ develop ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,13 +26,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '12.16.1'
+          node-version: '8'
 
       - name: Install node modules
         run: npm install
-
-      - name: Execute node tests
-        run: npm test
 
       - name: Execute build process
         run: npm run build
